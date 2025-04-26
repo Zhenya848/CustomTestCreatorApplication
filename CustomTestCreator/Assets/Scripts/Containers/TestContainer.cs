@@ -1,8 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
-using System.Collections;
-using System.Linq;
 
 public class TestContainer : MonoBehaviour
 {
@@ -25,19 +22,14 @@ public class TestContainer : MonoBehaviour
 
     public void AddTests(IEnumerable<TestDto> tests)
     {
+        while (transform.childCount > 0)
+            DestroyImmediate(transform.GetChild(0).gameObject);
+
         foreach (var test in tests)
         {
             _testPrefab.Set(test.Id.ToString(), test.TestName);
             Instantiate(_testPrefab.gameObject, transform);
         }
-
-        InitializeRect();
-    }
-
-    public void DeleteTests()
-    {
-        foreach (Transform child in transform)
-            DestroyImmediate(child.gameObject);
 
         InitializeRect();
     }
