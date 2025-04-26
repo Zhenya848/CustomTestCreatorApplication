@@ -17,6 +17,8 @@ public class TestInfoHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _minutes;
     [SerializeField] private TextMeshProUGUI _hours;
 
+    [SerializeField] private TaskContainer _taskContainer;
+
     public void Handle(Guid testId)
     {
         var test = _getClientController.Response.Result.Tests
@@ -31,6 +33,8 @@ public class TestInfoHandler : MonoBehaviour
         _seconds.text = "Секунд: " + test.LimitTime.Seconds.ToString();
         _minutes.text = "Минут: " + test.LimitTime.Minutes.ToString();
         _hours.text = "Часов: " + test.LimitTime.Hours.ToString();
+
+        _taskContainer.AddTasks(test.Tasks);
 
         _pageController.DisplayPage(_testPage);
     }
