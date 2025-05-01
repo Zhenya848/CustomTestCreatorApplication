@@ -2,7 +2,7 @@ public static class Constants
 {
     public class API
     {
-        public const string API_URL = "https://localhost:7099/";
+        public const string API_URL = "http://localhost:5292/";
     }
 
     public static class Tags
