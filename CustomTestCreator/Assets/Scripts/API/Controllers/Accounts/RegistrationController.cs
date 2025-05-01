@@ -19,7 +19,7 @@ public class RegistrationController : ControllerBase<UserDto>
         var request = new RegisterUserRequest
         { Username = Username.text, Email = Email.text, Password = Password.text };
 
-        Sender.PostData(request, "account/registration", OnHandleComplete);
+        Sender.PostData(request, "account/registration", OnHandleComplete, HttpMethods.Post);
     }
 
     protected override void OnHandleComplete(string responseData)

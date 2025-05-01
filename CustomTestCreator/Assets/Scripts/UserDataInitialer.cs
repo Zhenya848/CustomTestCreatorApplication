@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using UnityEngine;
 
 public class UserDataInitialer : MonoBehaviour
@@ -7,16 +6,11 @@ public class UserDataInitialer : MonoBehaviour
 
     private void Start()
     {
-        var userData = PlayerPrefs.GetString(Constants.Tags.USER_DATA_TAG);
+        var userData = SavedUserData.Get();
 
-        if (string.IsNullOrWhiteSpace(userData))
+        if (userData is null)
             return;
 
-        var response = JsonConvert.DeserializeObject<Envelope<UserDto>>(userData);
-
-        if (response is null || response.ResponseErrors is not null)
-            return;
-
-        _getClientController.GetClient(response.Result);
+        _getClientController.GetClient(userData);
     }
 }

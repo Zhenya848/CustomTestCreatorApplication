@@ -13,7 +13,7 @@ public class LoginController : ControllerBase<UserDto>
         var request = new LoginUserRequest() 
             { Email = Email.text, Password = Password.text };
 
-        Sender.PostData(request, "account/login", OnHandleComplete);
+        Sender.PostData(request, "account/login", OnHandleComplete, HttpMethods.Post);
     }
 
     protected override void OnHandleComplete(string responseData)

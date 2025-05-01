@@ -38,7 +38,7 @@ public abstract class ControllerBase<TResponse> : MonoBehaviour
 
         if (Response is null)
         {
-            ErrorAnimation.Play("Что - то пошло не так при обработке ответа");
+            ErrorAnimation.Play("Р§С‚Рѕ - С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє РїСЂРё РѕР±СЂР°Р±РѕС‚РєРµ РѕС‚РІРµС‚Р°");
 
             throw new Exception("Something went wrong while parsing the response");
         }
